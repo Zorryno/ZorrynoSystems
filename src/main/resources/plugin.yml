@@ -1,0 +1,6 @@
+name: ZorrynoSystems
+version: ${project.version}
+main: de.zorryno.zorrynosystems.Main
+api-version: 1.16
+author: zorryno #do not touch this
+prefix: "ZorrynoSystems"
