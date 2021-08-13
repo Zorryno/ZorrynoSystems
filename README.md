@@ -33,7 +33,7 @@ dependencies {
 
 
 ### What does this API have?
-- #### Custom Config
+- #### Custom Config and Messages Config
 You can easy create a .yml file in the resources folder and use it in your code
 ```JAVA
 public final class Main extends JavaPlugin {
@@ -41,6 +41,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         Config config = new Config(example.yml, this);
+        Messages messages = new Messages(messages.yml, this);
     }
 }
 ```
