@@ -21,15 +21,14 @@ public class Config {
     /**
      * Create a new {@link Config}
      *
-     * @param name the name of the Config file [Example: config.yml]
+     * @param fileName the name of the Config file [Example: config.yml]
      * @param plugin the {@link Plugin} in which Folder the File will be created
      */
-    public Config(String name, Plugin plugin) {
-        file = new File(plugin.getDataFolder(), name);
+    public Config(String fileName, Plugin plugin) {
+        file = new File(plugin.getDataFolder(), fileName);
         this.plugin = plugin;
 
         if (!file.exists()) {
-            //noinspection ResultOfMethodCallIgnored
             plugin.getDataFolder().mkdirs();
             plugin.saveResource(file.getName(), false);
         }
@@ -66,9 +65,8 @@ public class Config {
     }
 
     /**
-     *
+     * Delete the File and create a new one with the defaults
      */
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     public void reset() {
         file.delete();
         plugin.saveResource(file.getName(), false);
