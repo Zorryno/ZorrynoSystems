@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class Messages {
     public Messages(@NotNull String fileName, @NotNull Plugin plugin) {
         this.plugin = plugin;
-        messagesConfig = new Config("messages.yml", plugin);
+        messagesConfig = new Config(fileName, plugin);
         loadMessages();
     }
 
