@@ -14,7 +14,7 @@ Maven
     <dependency>
         <groupId>com.github.Zorryno</groupId>
         <artifactId>ZorrynoSystems</artifactId>
-        <version>1.2</version>
+        <version>1.2.1</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
