@@ -3,18 +3,17 @@ package de.zorryno.zorrynosystems.minecraftutils.scoreboard;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-public class EasyScoreboard {
-    public EasyScoreboard(String displayName) {
+public class CustomScoreboard {
+    public CustomScoreboard(String displayName) {
         this(displayName, Bukkit.getScoreboardManager().getMainScoreboard());
     }
 
-    public EasyScoreboard(String displayName, Scoreboard scoreboard) {
+    public CustomScoreboard(String displayName, Scoreboard scoreboard) {
         this.scoreboard = scoreboard;
         if(scoreboard.getObjective("sidebar") != null) {
             scoreboard.getObjective("sidebar").unregister();
@@ -23,6 +22,8 @@ public class EasyScoreboard {
         sidebarObjective.setDisplaySlot(DisplaySlot.SIDEBAR);
     }
 
+    private final Scoreboard scoreboard;
+    private final Objective sidebarObjective;
 
     public void setSidebarScore(int slot, String content) {
         if(slot > 16 || slot < 0) {
@@ -41,12 +42,8 @@ public class EasyScoreboard {
         sidebarObjective.getScore(entry).setScore(slot);
     }
 
-    public void addPlayer(Player player, String teamName, String prefix, String suffix, ChatColor color) {
-         Team team = getOrCreateTeam(teamName);
-         team.setPrefix(prefix);
-         team.setSuffix(suffix);
-         team.setColor(color);
-         team.addEntry(player.getName());
+    public void setSidebarTitle(String displayName) {
+        sidebarObjective.setDisplayName(displayName);
     }
 
     public void removePlayer(Player player) {
@@ -63,8 +60,4 @@ public class EasyScoreboard {
     private String getEntry(int slot) {
         return ChatColor.values()[slot].toString() + ChatColor.values()[slot + 1];
     }
-
-    private Plugin plugin;
-    private final Scoreboard scoreboard;
-    private final Objective sidebarObjective;
 }
