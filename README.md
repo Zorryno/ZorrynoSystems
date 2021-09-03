@@ -26,7 +26,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    compileOnly "com.github.Zorryno:ZorrynoSystems:1.0"
+    compileOnly "com.github.Zorryno:ZorrynoSystems:1.2.1"
 }
 ```
 
