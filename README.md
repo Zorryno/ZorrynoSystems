@@ -2,7 +2,7 @@
 Adds some methods and classes to make the work easier and faster
 
 ### How to Include
-####Maven
+Maven
 ```xml
 <repositories>
     <repository>
@@ -20,7 +20,7 @@ Adds some methods and classes to make the work easier and faster
 </dependencies>
 ```
 
-####Gradle
+Gradle
 ```groovy
 repositories {
     maven { url 'https://jitpack.io' }
