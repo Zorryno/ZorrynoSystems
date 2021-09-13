@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -29,13 +31,23 @@ public class ImageMessage {
     public ImageMessage appendText(String... text) {
         for(int y = 0; y < lines.length; ++y) {
             if (text.length > y) {
-                String[] immageLines = lines;
-                immageLines[y] = immageLines[y] + " " + text[y];
+                lines[y] += text[y] != null ? text[y] : "";
             }
         }
 
         return this;
     }
+
+    public ImageMessage appendText(List<String> text) {
+        for(int y = 0; y < lines.length; ++y) {
+            if (text.size() > y) {
+                lines[y] += text.get(y) != null ? text.get(y) : "";
+            }
+        }
+
+        return this;
+    }
+
 
     public ImageMessage appendCenteredText(String... text) {
         for(int y = 0; y < lines.length; ++y) {
@@ -44,11 +56,25 @@ public class ImageMessage {
             }
 
             int len = 65 - lines[y].length();
-            lines[y] = lines[y] + center(text[y], len);
+            lines[y] += center(text[y] != null ? text[y] : "", len);
         }
 
         return this;
     }
+
+    public ImageMessage appendCenteredText(List<String> text) {
+        for(int y = 0; y < lines.length; ++y) {
+            if (text.size() <= y) {
+                return this;
+            }
+
+            int len = 65 - lines[y].length();
+            lines[y] += center(text.get(y) != null ? text.get(y) : "", len);
+        }
+
+        return this;
+    }
+
 
     private ChatColor[][] toChatColorArray(BufferedImage image, int height) {
         double ratio = (double)image.getHeight() / (double)image.getWidth();
@@ -69,20 +95,20 @@ public class ImageMessage {
     }
 
     private String[] toImgMessage(ChatColor[][] colors, char imgchar) {
-        String[] lines = new String[colors[0].length];
+        String[] imgLines = new String[colors[0].length];
 
         for(int y = 0; y < colors[0].length; ++y) {
             String line = "";
 
             for(int x = 0; x < colors.length; ++x) {
                 ChatColor color = colors[x][y];
-                line = line + (color != null ? colors[x][y].toString() + imgchar : "Â§0#");
+                line += (color != null ? colors[x][y].toString() + imgchar : "Â§0#");
             }
 
-            lines[y] = line + ChatColor.RESET;
+            imgLines[y] = line + ChatColor.RESET;
         }
 
-        return lines;
+        return imgLines;
     }
 
     private BufferedImage resizeImage(BufferedImage originalImage, int width, int height) {

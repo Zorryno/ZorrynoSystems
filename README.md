@@ -14,7 +14,7 @@ Maven
     <dependency>
         <groupId>com.github.Zorryno</groupId>
         <artifactId>ZorrynoSystems</artifactId>
-        <version>1.2.4</version>
+        <version>1.2.5</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
@@ -26,7 +26,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    compileOnly "com.github.Zorryno:ZorrynoSystems:1.2.4"
+    compileOnly "com.github.Zorryno:ZorrynoSystems:1.2.5"
 }
 ```
 
