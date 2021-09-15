@@ -6,8 +6,8 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 public class ImageMessage {
@@ -134,29 +134,7 @@ public class ImageMessage {
     }
 
     private ChatColor getClosestChatColor(Color color) {
-        if (color.getAlpha() < 128) {
-            return null;
-        } else {
-            int index = 0;
-            double best = -1.0D;
-
-            int i;
-            for(i = 0; i < colors.length; ++i) {
-                if (areIdentical(colors[i], color)) {
-                    return ChatColor.values()[i];
-                }
-            }
-
-            for(i = 0; i < colors.length; ++i) {
-                double distance = getDistance(color, colors[i]);
-                if (distance < best || best == -1.0D) {
-                    best = distance;
-                    index = i;
-                }
-            }
-
-            return ChatColor.values()[index];
-        }
+        return ChatColor.of(color);
     }
 
     private String center(String s, int length) {
