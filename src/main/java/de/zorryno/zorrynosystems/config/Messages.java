@@ -4,6 +4,7 @@ import net.md_5.bungee.api.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,9 +14,18 @@ public class Messages {
     private HashMap<String, String> messages = new HashMap<>();
     private Plugin plugin;
     private Config messagesConfig;
+    private String prefix;
 
     public Messages(@NotNull String fileName, @NotNull Plugin plugin) {
+        this(fileName, plugin, null);
+    }
+
+    public Messages(@NotNull String fileName, @NotNull Plugin plugin, @Nullable String prefix) {
         this.plugin = plugin;
+        if(prefix != null)
+            this.prefix = prefix;
+        else
+            this.prefix = "";
         messagesConfig = new Config(fileName, plugin);
         loadMessages();
     }
@@ -27,7 +37,7 @@ public class Messages {
         for (String key : messagesConfig.getConfig().getKeys(true)) {
             String message = messagesConfig.getConfig().getString(key);
             if (message != null) {
-                this.messages.put(key, ChatColor.translateAlternateColorCodes('&', message));
+                this.messages.put(key, ChatColor.translateAlternateColorCodes('&', (prefix + message)));
             }
         }
     }
@@ -58,7 +68,7 @@ public class Messages {
     public List<String> getMessagesList(String path) {
         List<String> messages = new ArrayList<>();
         messagesConfig.getConfig().getStringList(path).forEach(message -> {
-            if (message != null) messages.add(ChatColor.translateAlternateColorCodes('&', message));
+            if (message != null) messages.add(ChatColor.translateAlternateColorCodes('&', (prefix + message)));
         });
         return messages;
     }
