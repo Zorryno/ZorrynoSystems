@@ -38,7 +38,6 @@ public class Config {
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
-
     }
 
 
