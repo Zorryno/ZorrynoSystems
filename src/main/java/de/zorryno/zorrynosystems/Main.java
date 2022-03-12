@@ -35,7 +35,7 @@ public final class Main extends JavaPlugin {
                 ChatColor.GRAY + "|" + ChatColor.DARK_GREEN +  "                              __/ |                                 "       + ChatColor.GRAY + "|\n" +
                 ChatColor.GRAY + "|" + ChatColor.DARK_GREEN +  "                             |___/                                  "       + ChatColor.GRAY + "|\n" +
                 ChatColor.GRAY + "|" + ChatColor.GRAY +        "                                                                    "       + ChatColor.GRAY + "|\n" +
-                ChatColor.GRAY + "|" + ChatColor.GREEN +       "         Zorryno Systems erfolgreich geladen!         Version 1.2.9 "       + ChatColor.GRAY + "|\n" +
+                ChatColor.GRAY + "|" + ChatColor.GREEN +       "         Zorryno Systems erfolgreich geladen!         Version 1.2.9.2 "       + ChatColor.GRAY + "|\n" +
                 ChatColor.GRAY + "|" + ChatColor.GRAY +        " -------------------------------------------------------------------"       + ChatColor.GRAY + "|");
     }
 }
